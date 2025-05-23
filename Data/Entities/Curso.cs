@@ -27,7 +27,7 @@ namespace RazorApp.Cursos.Data.Entities
         public required string[] Technologies { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(200, ErrorMessage = "El campo {0} supera la longitud máxima")]
-        public required double Price { get; set; }
+        public required string Price { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(200, ErrorMessage = "El campo {0} supera la longitud máxima")]
         public required string Instructor { get; set; }
