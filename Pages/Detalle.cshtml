@@ -1,0 +1,36 @@
+﻿@page
+@model DetalleModel
+@{
+    ViewData["Title"] = "Detalles del Curso";
+}
+<div class="container my-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            <h3 class="card-title">
+                @Model.Curso.Name
+            </h3>
+            <h6 class="card-subtitle mb-2 text-muted">Instructor: </h6>
+            <strong>@Model.Curso.Instructor</strong>
+            <p class="card-text">
+                @Model.Curso.Description
+            </p>
+            <p>
+                <strong>Tecnologías:</strong>
+
+                @foreach (var item in Model.Curso.Technologies)
+                {
+                    <span>
+                        @item
+                    </span>
+                }
+            </p>
+            <p class="fs-5 fw-bold text-primary">
+                <strong>Precio:</strong>
+                @Model.Curso.Price
+            </p>
+            <div class="d-flex gap-3">
+                <a class="btn btn-outline-primary" asp-page="Index">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
