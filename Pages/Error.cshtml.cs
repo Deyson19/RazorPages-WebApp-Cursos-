@@ -11,6 +11,7 @@ namespace RazorApp.Cursos.Pages
         public string? RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public string? errorMessage { get; set; }
 
         private readonly ILogger<ErrorModel> _logger;
 
@@ -19,9 +20,14 @@ namespace RazorApp.Cursos.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public void OnGet(string? message)
         {
+            if (message != null)
+            {
+                errorMessage = message;
+            }
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            errorMessage += " " + RequestId;
         }
     }
 
