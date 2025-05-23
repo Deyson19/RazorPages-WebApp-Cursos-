@@ -1,0 +1,54 @@
+﻿@page
+@model RazorApp.Cursos.Pages.CrearModel
+@{
+    ViewData["Title"] = "Crear Curso";
+}
+
+
+<div class="container" style="max-width: 600px;">
+    <form method="post">
+        @Html.ValidationSummary()
+        <h4 class="mb-4">Crear Nuevo Curso</h4>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre del curso</label>
+            <input type="text" class="form-control" asp-for="@Model.CursoDto.Name" placeholder="Nombre del curso" required />
+            @Html.ValidationMessageFor(x => x.CursoDto.Name)
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" asp-for="@Model.CursoDto.Description" rows="3" placeholder="Descripción del curso" required></textarea>
+            @Html.ValidationMessageFor(x => x.CursoDto.Description)
+        </div>
+
+        <div class="mb-3">
+            <label for="technologies" class="form-label">Tecnologías (separadas por comas)</label>
+            <input type="text" class="form-control" asp-for="@Model.CursoDto.Technologies" placeholder="Ej: Python, JavaScript, SQL" required />
+            @Html.ValidationMessageFor(x => x.CursoDto.Technologies)
+
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio (USD)</label>
+            <input type="number" class="form-control" asp-for="@Model.CursoDto.Price" placeholder="Precio del curso" min="0" step="0.01" required />
+            @Html.ValidationMessageFor(x => x.CursoDto.Price)
+
+        </div>
+
+        <div class="mb-3">
+            <label for="instructor" class="form-label">Instructor</label>
+            <input type="text" class="form-control" asp-for="@Model.CursoDto.Instructor" placeholder="Nombre del instructor" required />
+            @Html.ValidationMessageFor(x => x.CursoDto.Instructor)
+
+        </div>
+        @if (Model.Id.ToString() != null)
+        {
+            <button type="submit" class="btn btn-success w-100">Actualizar Curso</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary w-100">Crear Curso</button>
+        }
+    </form>
+</div>
